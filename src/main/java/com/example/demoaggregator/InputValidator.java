@@ -11,7 +11,7 @@ public class InputValidator {
             for (String number : numbers) {
                 try {
                     //BigDecimal bd = BigDecimal.valueOf(0d).longValue();
-                    double dNumber = Double.parseDouble(number);
+                    double dNumber = Double.parseDouble(number.trim());
                     result.add(dNumber);
                 } catch (Exception wrongInput) {
                     // ignore all that is not a number
