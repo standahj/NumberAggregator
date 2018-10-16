@@ -3,6 +3,9 @@ package com.example.demoaggregator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Track input numbers and determine Min, Max and Average value
+ */
 public class MinMaxAggregator implements IAggregator {
 
     private double m_min = 0d;

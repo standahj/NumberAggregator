@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Map;
 
+/**
+ * Implements solution's Spring Boot Web ready RESTful interface
+ */
 @SpringBootApplication
 @RestController
 @EnableAutoConfiguration
@@ -39,29 +42,46 @@ public class DemoAggregatorApplication extends WebSecurityConfigurerAdapter {
 		m_aggregator = new MinMaxAggregator();
 	}
 
+	/**
+	 * Endpoint to add (submit) number list to the aggregator
+	 * @param val
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/addNumbers", method = RequestMethod.POST, produces = "text/html",
 					consumes = "application/json")
 	@ResponseBody
 	public ResponseEntity<String> addNumbers(@RequestBody Map<String, Object> val,
 													HttpServletRequest request,
 													HttpServletResponse response) {
-		System.out.println("======= addNumbers ====================");
 		String numberString = "" + val.getOrDefault("numbers", ""); // use default toString conversion
+		// Input Validator filters out all illegal input, producing only list of valid numbers
 		InputValidator.validateInput(numberString).stream().forEach(e -> m_aggregator.addNumber(e));
 		String reply = m_aggregator.getOutput(new HTMLFormatter());
 		return new ResponseEntity<>(reply,  HttpStatus.OK);
 	}
 
+	/**
+	 * Endpoint to read the aggregator's content
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/getNumbers", method = RequestMethod.GET, produces = "text/html")
 	@ResponseBody
 	public ResponseEntity<String> addNumbers(
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("======= getNumbers ====================");
 		String reply = m_aggregator.getOutput(new HTMLFormatter());
 		return new ResponseEntity<>(reply,  HttpStatus.OK);
 	}
 
+	/**
+	 * Disable the default Sprin Boot endpoint security, to make things simple
+	 * @param http
+	 * @throws Exception
+	 */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		// @formatter:off

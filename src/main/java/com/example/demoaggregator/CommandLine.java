@@ -2,6 +2,9 @@ package com.example.demoaggregator;
 
 import java.util.Scanner;
 
+/**
+ * Implement's solutions CLI interface
+ */
 public class CommandLine {
     public static void main(String[] argv) {
         System.out.println("Type a (comma-separated list of) number(s): ");

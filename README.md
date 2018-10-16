@@ -19,7 +19,7 @@ Run the command line version (from top directory):
 java -cp target/demo-aggregator-0.0.1-SNAPSHOT.jar.original com.example.demoaggregator.CommandLine
 ```
 
-There is also a Web application option implemented as RESTful service with Spring Boot
+There is also a Web application option implemented as RESTful service with Spring Boot. 
 To start web application, start the web server with maven command:
 ```
 mvn spring-boot:run
@@ -41,7 +41,7 @@ Example payload:  '{"numbers":"-12,24.6,170"}'
 
 You may submit numbers to endpoint /addNumbers  with e.g. curl command (or any other POST request generator):
 ```
-curl 'http://localhost:8080/addNumbers' -H 'Pragma: no-cache' -H 'Origin: http://localhost' -H 'Content-Type: application/json' -H 'Accept: */*' --data-binaryumbers":"12,24,17"}'
+curl 'http://localhost:8080/addNumbers' -H 'Pragma: no-cache' -H 'Origin: http://localhost' -H 'Content-Type: application/json' -H 'Accept: */*' --data-binary '{"numbers":"12,24,17"}'
 ```
 
 The security on the endpoints is turned-off in order not to complicate the solution.  
