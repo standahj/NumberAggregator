@@ -44,5 +44,5 @@ You may submit numbers to endpoint /addNumbers  with e.g. curl command (or any o
 curl 'http://localhost:8080/addNumbers' -H 'Pragma: no-cache' -H 'Origin: http://localhost' -H 'Content-Type: application/json' -H 'Accept: */*' --data-binaryumbers":"12,24,17"}'
 ```
 
-The security on the endpoints is turned-off in order not to complicate teh solution.  
+The security on the endpoints is turned-off in order not to complicate the solution.  
 
