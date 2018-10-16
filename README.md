@@ -35,7 +35,7 @@ POST: http://localhost:8080/addNumbers
 
 the /addNumbers  endpoint expects a payload with key 'numbers' and value is a comma-separated number list
 
-Example payload:  '{numbers":"-12,24.6,170"}'
+Example payload:  '{"numbers":"-12,24.6,170"}'
 
 
 
